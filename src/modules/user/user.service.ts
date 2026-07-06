@@ -3,41 +3,46 @@ import config from "../../config";
 import { prisma } from "../../lib/prisma";
 import { RegisterUserPayload } from "./user.interface";
 
-const registerUserIntoDB = async (payload: RegisterUserPayload) =>{
-    const { name, email, password, profilePhoto, role, phone } = payload;
-    const isUserExist = await prisma.user.findUnique({
-        where: { email }
-    })
+const registerUserIntoDB = async (payload: RegisterUserPayload) => {
+  const { name, email, password, profilePhoto, role, phone } = payload;
+  const isUserExist = await prisma.user.findUnique({
+    where: { email },
+  });
 
-    if (isUserExist) {
-        throw new Error("User with this email already exists");
-    }
+  if (isUserExist) {
+    throw new Error("User with this email already exists");
+  }
 
-    const hashedPassword = await bcrypt.hash(password, Number(config.bcrypt_salt_rounds))
+  const hashedPassword = await bcrypt.hash(
+    password,
+    Number(config.bcrypt_salt_rounds),
+  );
 
-    const createdUser = await prisma.user.create({
-        data: {
-            name,
-            email,
-            password: hashedPassword,
-            role,
-            phone,
-        }
-    });
+  const createdUser = await prisma.user.create({
+    data: {
+      name,
+      email,
+      password: hashedPassword,
+      role,
+      phone,
+    },
+  });
 
-    const user = await prisma.user.findUnique({
-        where: {
-            id: createdUser.id,
-            email: createdUser.email || email
-        },
-        omit: {
-            password: true
-        }
-    })
+  const user = await prisma.user.findUnique({
+    where: {
+      id: createdUser.id,
+      email: createdUser.email || email,
+    },
+    omit: {
+      password: true,
+    },
+  });
 
-    return user;
-}
+  return user;
+};
 
+const getMyProfileFromDB = async () => {};
 export const userService = {
-    registerUserIntoDB
-}
+  registerUserIntoDB,
+  getMyProfileFromDB,
+};
