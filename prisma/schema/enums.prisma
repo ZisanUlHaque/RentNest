@@ -8,3 +8,17 @@ enum Role {
     LANDLORD 
     ADMIN
 }
+
+enum PropertyType {
+    APARTMENT
+    HOUSE
+    STUDIO
+    ROOM
+    DUPLEX
+}
+
+enum PropertyStatus {
+    AVAILABLE
+    PENDING
+    RENTED
+}

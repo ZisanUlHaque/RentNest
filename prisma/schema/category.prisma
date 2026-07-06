@@ -3,6 +3,8 @@ model Category {
     name String @unique
     description String?
 
+    properties  Property[]
+
     createdAt DateTime @default(now())
 
     @@map("category")
