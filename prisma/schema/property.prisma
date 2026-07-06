@@ -3,11 +3,13 @@ model Property {
     title String 
     description String
     propertyType  PropertyType
-    rentPerMonth Float
+    rentPerMonth Decimal @db.Decimal(10,2)
     location String
     amenities String[]
     images String[]
     status        PropertyStatus @default(AVAILABLE)
+
+    rentalRequests RentalRequest[]
 
     landlordId String 
     landlord User @relation(fields: [landlordId], references: [id])

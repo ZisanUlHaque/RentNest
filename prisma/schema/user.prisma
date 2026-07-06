@@ -8,6 +8,7 @@ model User {
     profilePhoto String?
     phone String @unique @db.VarChar(20)
 
+    rentalRequests RentalRequest[]
     properties    Property[]
 
     createdAt DateTime @default(now())

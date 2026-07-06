@@ -22,3 +22,12 @@ enum PropertyStatus {
     PENDING
     RENTED
 }
+
+enum RentalRequestStatus {
+    PENDING 
+    APPROVED 
+    REJECTED 
+    PAYMENT_PENDING 
+    ACTIVE 
+    COMPLETED
+}
