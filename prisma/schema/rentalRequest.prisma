@@ -1,19 +1,21 @@
-model RentalRequest{
-    id String @id @default(uuid())
-    moveInDate DateTime
-    durationMonths Int
-    message String?
-    status RentalRequestStatus @default(PENDING)
+model RentalRequest {
+  id             String              @id @default(uuid())
+  moveInDate     DateTime
+  durationMonths Int
+  message        String?
+  status         RentalRequestStatus @default(PENDING)
 
-    propertyId String
-    property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
 
-    tenantId String
-    tenant User  @relation(fields: [tenantId], references: [id],onDelete: Cascade)
+  tenantId String
+  tenant   User   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-    @@unique([tenantId, propertyId])
-    @@map("rental_requests")
+  @@unique([tenantId, propertyId])
+  @@index([propertyId])
+  @@index([tenantId])
+  @@map("rental_requests")
 }
