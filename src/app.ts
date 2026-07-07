@@ -5,6 +5,8 @@ import config from "./config";
 import { userRoutes } from "./modules/user/user.route";
 import { authRoutes } from "./modules/auth/auth.route";
 import { categoryRoutes } from "./modules/category/category.route";
+import { notFound } from "./midddlewares/notFound";
+import { globalErrorHandler } from "./midddlewares/globalErrorHandler";
 
 const app: Application = express();
 
@@ -31,5 +33,9 @@ app.use("/api/users", userRoutes);
 app.use("/api/admin", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/categories", categoryRoutes);
+
+
+app.use(notFound)
+app.use(globalErrorHandler);
 
 export default app;
