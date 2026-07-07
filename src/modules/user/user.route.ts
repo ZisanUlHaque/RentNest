@@ -13,10 +13,18 @@ router.get(
   userController.getMyProfile,
 );
 
+router.get("/all-users", auth(Role.ADMIN), userController.getAllUsers);
+
 router.put(
   "/my-profile",
   auth(Role.ADMIN, Role.LANDLORD, Role.TENANT),
   userController.updateMyProfile,
+);
+
+router.patch(
+  "/users/:id",
+  auth(Role.ADMIN),
+  userController.updateUserStatus,
 );
 
 export const userRoutes = router;

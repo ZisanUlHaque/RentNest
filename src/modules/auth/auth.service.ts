@@ -4,6 +4,7 @@ import { IloginUser } from "./auth.interface";
 import jwt, { JwtPayload, SignOptions } from "jsonwebtoken";
 import config from "../../config";
 import { jwtUtils } from "../../utils/jwt";
+import { ActiveStatus } from "../../../generated/prisma/enums";
 
 const loginUser = async (payload: IloginUser) => {
   const { email, password } = payload;
@@ -14,6 +15,9 @@ const loginUser = async (payload: IloginUser) => {
     },
   });
 
+  if (user.activeStatus === ActiveStatus.BANNED) {
+    throw new Error("Your account has been banned. Please contact support.");
+  }
   const isPasswordMatched = await bcrypt.compare(password, user.password);
 
   if (!isPasswordMatched) {
@@ -64,9 +68,7 @@ const refreshToken = async (refreshToken: string) => {
   });
 
   if (user.activeStatus === "BANNED") {
-    throw new Error(
-      "Your account has been banned, please contact the support",
-    );
+    throw new Error("Your account has been banned, please contact the support");
   }
 
   const jwtPayload = {
@@ -79,13 +81,13 @@ const refreshToken = async (refreshToken: string) => {
   const accessToken = jwtUtils.createToken(
     jwtPayload,
     config.jwt_access_secret,
-    config.jwt_access_expires_in as SignOptions
-  )
+    config.jwt_access_expires_in as SignOptions,
+  );
 
-  return {accessToken}
+  return { accessToken };
 };
 
 export const authService = {
   loginUser,
-  refreshToken
+  refreshToken,
 };

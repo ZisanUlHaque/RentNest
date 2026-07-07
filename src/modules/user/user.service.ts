@@ -1,7 +1,9 @@
 import bcrypt from "bcryptjs";
 import config from "../../config";
 import { prisma } from "../../lib/prisma";
-import { RegisterUserPayload } from "./user.interface";
+import { IUpdateUserStatusPayload, RegisterUserPayload } from "./user.interface";
+import { ActiveStatus } from "../../../generated/prisma/enums";
+import { IUpdateCategoryPayload } from "../category/category.interface";
 
 const registerUserIntoDB = async (payload: RegisterUserPayload) => {
   const { name, email, password, profilePhoto, role, phone } = payload;
@@ -65,14 +67,76 @@ const updateMyProfileIntoDB = async (userId: string, payload: any) => {
       profilePhoto,
     },
     omit: {
-      password : true
+      password: true,
     },
   });
   return updateUser;
+};
+
+const getAllUsers = async (query: {
+  role?: string;
+  activeStatus?: string;
+}) => {
+  const where: Record<string, unknown> = {};
+
+  if (query.role) {
+    where.role = query.role;
+  }
+
+  if (query.activeStatus) {
+    where.activeStatus = query.activeStatus;
+  }
+
+  const users = await prisma.user.findMany({
+    where,
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      activeStatus: true,
+      phone: true,
+      profilePhoto: true,
+      createdAt: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  return users;
+};
+
+const updateUserStatus = async (
+  adminId: string,
+  userId: string,
+  payload: IUpdateUserStatusPayload
+) => {
+  if (adminId === userId) {
+    throw new Error("You cannot change your own status.");
+  }
+
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+  });
+
+  if (!user) {
+    throw new Error("User not found.");
+  }
+
+  return prisma.user.update({
+    where: { id: userId },
+    omit : {
+      password : true
+    },
+    data: payload,
+  });
 };
 
 export const userService = {
   registerUserIntoDB,
   getMyProfileFromDB,
   updateMyProfileIntoDB,
+  getAllUsers,
+  updateUserStatus,
 };
