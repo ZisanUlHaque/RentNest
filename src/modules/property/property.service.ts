@@ -74,7 +74,7 @@ const getAllProperties = async (query: IPropertyQuery) => {
 
   if (query.status !== undefined) {
     andConditions.push({
-      status: query.status,
+      status: query.status
     });
   }
 
@@ -92,7 +92,7 @@ const getAllProperties = async (query: IPropertyQuery) => {
       landlord: {
         select: { id: true, name: true, profilePhoto: true },
       },
-      _count: { select: { rentalRequests: true,  } },
+      _count: { select: { rentalRequests: true, reviews: true } },
     },
   });
 
@@ -121,9 +121,13 @@ const getPropertyById = async (propertyId: string) => {
       landlord: {
         select: { id: true, name: true, profilePhoto: true, phone: true },
       },
-
-
-      _count: { select: { rentalRequests: true,  } },
+      reviews: {
+        include: {
+          tenant: { select: { id: true, name: true, profilePhoto: true } },
+        },
+        orderBy: { createdAt: "desc" },
+      },
+      _count: { select: { rentalRequests: true, reviews: true } },
     },
   });
 
@@ -196,6 +200,7 @@ const adminGetAllProperties = async (query: IPropertyQuery) => {
     include: {
       category: { select: { id: true, name: true } },
       landlord: { select: { id: true, name: true, email: true } },
+      _count: { select: { rentalRequests: true, reviews: true } },
     },
   });
 
@@ -218,7 +223,7 @@ const getMyProperties = async (landlordId: string) => {
     orderBy: { createdAt: "desc" },
     include: {
       category: { select: { id: true, name: true } },
-      _count: { select: { rentalRequests: true, } },
+      _count: { select: { rentalRequests: true, reviews: true } },
     },
   });
 

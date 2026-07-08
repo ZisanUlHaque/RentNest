@@ -1,0 +1,18 @@
+model Payment {
+  id              String        @id @default(uuid())
+  rentalRequestId String        @unique
+  tenantId        String
+  amount          Float
+  currency        String        @default("bdt")
+  stripePaymentIntentId String? @unique
+  stripeClientSecret    String?
+  status          PaymentStatus @default(PENDING)
+  paidAt          DateTime?
+  createdAt       DateTime      @default(now())
+
+  rentalRequest RentalRequest @relation(fields: [rentalRequestId], references: [id])
+  tenant        User          @relation(fields: [tenantId], references: [id])
+
+  @@index([tenantId])
+  @@map("payments")
+}

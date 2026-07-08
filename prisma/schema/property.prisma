@@ -9,6 +9,7 @@ model Property {
   status       PropertyStatus @default(AVAILABLE)
 
   rentalRequests RentalRequest[]
+  reviews        Review[]
 
   landlordId String
   landlord   User   @relation(fields: [landlordId], references: [id], onDelete: Cascade)
