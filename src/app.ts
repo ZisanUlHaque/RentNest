@@ -9,6 +9,8 @@ import { notFound } from "./midddlewares/notFound";
 import { globalErrorHandler } from "./midddlewares/globalErrorHandler";
 import { propertyRoutes } from "./modules/property/property.route";
 import { rentalRoutes } from "./modules/rental_request/rental.route";
+import { paymentRoutes } from "./modules/payment/payment.routes";
+import { reviewRoutes } from "./modules/review/review.route";
 
 const app: Application = express();
 
@@ -18,6 +20,10 @@ app.use(
     credentials: true,
   }),
 );
+
+const endpointSecret = config.stripe_webhook_secret;
+
+app.use("/api/payments/webhook",express.raw({ type: 'application/json' }))
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -37,6 +43,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/properties", propertyRoutes);
 app.use("/api/rentals", rentalRoutes);
+app.use("/api/payments", paymentRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 
 
