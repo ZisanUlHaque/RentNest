@@ -125,10 +125,12 @@ npm db:generate
 
 # 6. Start development server
 npm dev
+```
 
----
-###Flow Diagrams
-##🏠 Tenant Journey
+### Flow Diagrams
+
+## 🏠 Tenant Journey
+
                               ┌──────────────┐
                               │   Register   │
                               └──────────────┘
@@ -167,7 +169,9 @@ npm dev
                               ┌──────────────┐
                               │ Leave Review │
                               └──────────────┘
-##🏘️ Landlord Journey
+
+## 🏘️ Landlord Journey
+
                               ┌──────────────┐
                               │   Register   │
                               └──────────────┘
@@ -195,8 +199,8 @@ npm dev
                               │   Manage     │
                               │  Properties  │
                               └──────────────┘
----
-##📊 Rental Request Status
+
+## 📊 Rental Request Status
                               ┌──────────────┐
                               │   PENDING    │
                               └──────────────┘
@@ -228,8 +232,9 @@ npm dev
                    │  COMPLETED   │
                    └──────────────┘
 
---                   
+              
 ## 📁 Project Structure
+
 basafinder-backend/
 ├── prisma/
 │   ├── schema.prisma           # Database schema
@@ -259,3 +264,6 @@ basafinder-backend/
 └── README.md
 
                    
+# 📄 License
+
+This project is licensed under the **MIT License**.

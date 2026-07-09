@@ -1,0 +1,717 @@
+{
+  "info": {
+    "_postman_id": "e185cf06-503b-473d-bc98-e99973a63905",
+    "name": "RentNest",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49694011",
+    "_collection_link": "https://go.postman.co/collection/49694011-e185cf06-503b-473d-bc98-e99973a63905?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Haaland\",\r\n    \"email\": \"haaland@gmail.com\",\r\n    \"password\": \"password123\",\r\n    \"role\": \"TENANT\",\r\n    \"phone\": \"01711000006\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/users/register",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"messi@gmail.com\",\r\n    \"password\": \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/auth/login",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "me",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/users/me",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "users",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateUser",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Haaland\",\r\n    \"email\": \"haaland@gmail.com\",\r\n    \"profilePhoto\": \"https://example.com/new-photo.jpg\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/users/my-profile",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "users",
+                "my-profile"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Category",
+      "item": [
+        {
+          "name": "create Category",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"name\": \"House \",\r\n\"description\": \"A self-contained housing unit in a house.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/categories",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get category",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/categories",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update category",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Office\",\r\n    \"description\": \"A self-contained housing unit in a Office update\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/categories/503a4c1c-2523-43b2-8f65-2935944a69e2",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "categories",
+                "503a4c1c-2523-43b2-8f65-2935944a69e2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete category",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/categories/0644ed3f-41be-42ca-8d8d-227efa6e2a75",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "categories",
+                "0644ed3f-41be-42ca-8d8d-227efa6e2a75"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "refresh-token",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"zisan@admin.com\",\r\n    \"password\": \"password123\"\r\n}"
+            },
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/auth/refresh-token",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "refresh-token"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "update status",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"activeStatus\": \"BANNED\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/admin/users/ff08d4f9-6c56-440a-8124-e3c0e2505d83",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "admin",
+                "users",
+                "ff08d4f9-6c56-440a-8124-e3c0e2505d83"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "All users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/admin/all-users",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "all-users"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Property",
+      "item": [
+        {
+          "name": "create property",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Cozy Studio in Uttara\",\r\n  \"description\": \"A fully furnished studio apartment ideal for students and professionals.\",\r\n  \"categoryId\": \"4d03021c-a39a-4b5f-99fa-1b77b37ecd8c\",\r\n  \"rentPerMonth\": 18000,\r\n  \"location\": \"Uttara Sector 7, Dhaka\",\r\n  \"amenities\": [\r\n    \"WiFi\",\r\n    \"AC\",\r\n    \"Generator\",\r\n    \"Security\"\r\n  ],\r\n  \"images\": [\r\n    \"https://example.com/studio1.jpg\",\r\n    \"https://example.com/studio2.jpg\"\r\n  ],\r\n  \"status\": \"AVAILABLE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/properties",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "properties"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get Property",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/properties/landlord/my-properties",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "properties",
+                "landlord",
+                "my-properties"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Property",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Cozy Studio in Uttara\",\r\n  \"description\": \"A fully furnished studio apartment ideal for students and professionals.\",\r\n  \"categoryId\": \"4d03021c-a39a-4b5f-99fa-1b77b37ecd8c\",\r\n  \"rentPerMonth\": 19000,\r\n  \"location\": \"Uttara Sector 7, Dhaka\",\r\n  \"amenities\": [\r\n    \"WiFi\",\r\n    \"AC\",\r\n    \"Generator\",\r\n    \"Security\"\r\n  ],\r\n  \"images\": [\r\n    \"https://example.com/studio1.jpg\",\r\n    \"https://example.com/studio2.jpg\"\r\n  ],\r\n  \"status\": \"AVAILABLE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/properties/01KX2S0HW4SHJEVT06SVV5X3DC",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "properties",
+                "01KX2S0HW4SHJEVT06SVV5X3DC"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "admin get",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/properties/admin/all",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "properties",
+                "admin",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "filter",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/properties?\nsearch=studio&location=Dhanmondi&minRent=5000&maxRent=15000&page=1&limit=10",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "properties"
+              ],
+              "query": [
+                {
+                  "key": "\nsearch",
+                  "value": "studio"
+                },
+                {
+                  "key": "location",
+                  "value": "Dhanmondi"
+                },
+                {
+                  "key": "minRent",
+                  "value": "5000"
+                },
+                {
+                  "key": "maxRent",
+                  "value": "15000"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete property",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"title\": \"Premium apartment in Banani\",\r\n\"description\": \"A clean and quiet studio apartment with all utilities included.\",\r\n\"categoryId\": \"9649d093-a8dc-4262-b173-56a4e244e4e4\",\r\n\"rentPerMonth\": 20000,\r\n\"location\": \"Banani, Dhaka\",\r\n\"amenities\": [\"WiFi\", \"Generator\", \"Parking\"],\r\n\"images\": [\"https://example.com/img1.jpg\", \"https://example.com/img2.jpg\"],\r\n\"status\" : \"AVAILABLE\"\r\n}"
+            },
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/properties/01KX07V0M6YMNVQZ6KKE7HJYNJ",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "properties",
+                "01KX07V0M6YMNVQZ6KKE7HJYNJ"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Rentals",
+      "item": [
+        {
+          "name": "add rental",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"propertyId\": \"01KX2RVV5WMS9Y5RTY5FHMQ1M6\",\r\n\"moveInDate\": \"2026-07-20\",\r\n\"durationMonths\": 4,\r\n\"message\": \"I am a working professional looking for a quiet place.\"\r\n}\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/rentals",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "rentals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get rental",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/rentals",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "rentals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "rental by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/rentals/a576f4a8-9670-4b50-923b-4723ec516404",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "rentals",
+                "a576f4a8-9670-4b50-923b-4723ec516404"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update status",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"status\": \"APPROVED\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/rentals/landlord/requests/4ec3ec7b-c4da-450f-801f-5cfcfbe99ec0",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "rentals",
+                "landlord",
+                "requests",
+                "4ec3ec7b-c4da-450f-801f-5cfcfbe99ec0"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "payment",
+      "item": [
+        {
+          "name": "create checkout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"rentalRequestId\": \"4ec3ec7b-c4da-450f-801f-5cfcfbe99ec0\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/payments/create",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "payments",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get payment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/payments",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "payments"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "review",
+      "item": [
+        {
+          "name": "create review",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"propertyId\": \"01KX2RRHW18A907NVMT1MR07W0\",\r\n    \"rentalRequestId\": \"8e5fd29a-b1e8-46b8-944e-27ca2ee3a490\",\r\n    \"rating\": 4,\r\n    \"comment\": \"Great location, clean space, responsive landlord.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://rent-nest-backend-sigma.vercel.app/api/reviews",
+              "protocol": "https",
+              "host": [
+                "rent-nest-backend-sigma",
+                "vercel",
+                "app"
+              ],
+              "path": [
+                "api",
+                "reviews"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
