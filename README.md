@@ -68,7 +68,8 @@ A robust backend API for a rental property marketplace built with **Express**, *
 
 ## 🗄️ Database Design
 
-![RentNest Database Design](./database-design.png)
+<img width="2113" height="1604" alt="drawSQL-image-export-2026-07-09" src="https://github.com/user-attachments/assets/b1b46c98-c86e-4cba-b78d-12758032938c" />
+
 
 > The database consists of 6 core tables: **Users**, **Categories**, **Properties**, **RentalRequests**, **Payments**, and **Reviews** — all connected through foreign key relationships with proper cascading.
 
@@ -224,3 +225,33 @@ npm dev
                    ┌──────────────┐
                    │  COMPLETED   │
                    └──────────────┘
+📁 Project Structure
+basafinder-backend/
+├── prisma/
+│   ├── schema.prisma           # Database schema
+│   └── seed.ts                 # Seed data
+├── src/
+│   ├── app/
+│   │   ├── config/             # Configuration
+│   │   ├── lib/                # Utilities (Prisma, Stripe)
+│   │   ├── middlewares/        # Auth, error handlers
+│   │   ├── modules/
+│   │   │   ├── auth/           # Authentication
+│   │   │   ├── user/           # User management
+│   │   │   ├── property/       # Property CRUD
+│   │   │   ├── category/       # Categories
+│   │   │   ├── rental/         # Rental requests
+│   │   │   ├── payment/        # Stripe payments
+│   │   │   └── review/         # Reviews
+│   │   └── utils/              # Helper functions
+│   ├── app.ts                  # Express app
+│   └── server.ts               # Entry point
+├── generated/
+│   └── prisma/                 # Generated Prisma client
+├── .env.example                # Env template
+├── vercel.json                 # Vercel config
+├── tsconfig.json               # TypeScript config
+├── package.json
+└── README.md
+
+                   
