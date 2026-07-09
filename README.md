@@ -126,7 +126,8 @@ npm db:generate
 # 6. Start development server
 npm dev
 
-### Flow Diagrams
+---
+###Flow Diagrams
 ##🏠 Tenant Journey
                               ┌──────────────┐
                               │   Register   │
@@ -194,6 +195,7 @@ npm dev
                               │   Manage     │
                               │  Properties  │
                               └──────────────┘
+---
 ##📊 Rental Request Status
                               ┌──────────────┐
                               │   PENDING    │
@@ -226,7 +228,7 @@ npm dev
                    │  COMPLETED   │
                    └──────────────┘
 
-                   
+--                   
 ## 📁 Project Structure
 basafinder-backend/
 ├── prisma/
