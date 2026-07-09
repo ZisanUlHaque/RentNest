@@ -234,7 +234,7 @@ npm dev
 
               
 ## 📁 Project Structure
-
+```
 basafinder-backend/
 ├── prisma/
 │   ├── schema.prisma           # Database schema
@@ -262,7 +262,7 @@ basafinder-backend/
 ├── tsconfig.json               # TypeScript config
 ├── package.json
 └── README.md
-
+```
                    
 # 📄 License
 
