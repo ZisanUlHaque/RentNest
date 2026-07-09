@@ -11,7 +11,6 @@
     "build": "prisma generate && tsup",
     "start": "node dist/server.js",
     "postinstall": "prisma generate",
-    "stripe:webhook": "stripe listen --forward-to localhost:5000/api/payments/webhook",
     "seed" : "tsx prisma/seed.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
