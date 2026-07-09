@@ -141,7 +141,6 @@ const handleWebhook = async (payload: Buffer, signature: string) => {
   }
 };
 
-// ─────────────────────────────────────────────────────────────
 
 const getMyPayments = async (userId: string, role: string) => {
   if (role === Role.ADMIN) {
